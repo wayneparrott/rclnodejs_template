@@ -1,7 +1,16 @@
 
+# Common build process for ROS2 services and messages
+#
+
 # define project interfaces and messages to compile
 find_package(rosidl_default_generators REQUIRED)
-rosidl_generate_interfaces(${PROJECT_NAME} "srv/Control.srv")
+
+# if pkg defines custom msg and/or srv uncomment and edit
+#rosidl_generate_interfaces(${PROJECT_NAME} 
+#     "srv/MyService1.srv" "srv/MyService2.srv"
+#     "msg/MyMessage1.msg" "msg/MyMessage2.msg"
+# )
+
 ament_export_dependencies(rosidl_default_runtime)
 
 #
