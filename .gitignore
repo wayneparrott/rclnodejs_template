@@ -21,6 +21,7 @@ jspm_packages
 # CodeMix & VSCode
 .settings
 .vscode
+.project
 
 # ROS
 ros
