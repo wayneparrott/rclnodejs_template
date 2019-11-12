@@ -1,0 +1,43 @@
+{
+  "name": "rclnodejs_template",
+  "version": "0.0.1",
+  "description": "ROS2 package using rclnodejs, TypeScript (javascript) and node.js",
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "npm run clean && npm run build-tsc && npm run build-colcon && npm run generate-messages",
+    "build-tsc": "tsc",
+    "build-colcon": "colcon build --build-base ros --install-base ros && rm -rf log",
+    "generate-messages": "node ./node_modules/rclnodejs/scripts/generate_messages.js",
+    "clean": "rm -rf dist/ install_support/tmp && npm run clean-colcon",
+    "clean-colcon": "rm -rf ros/ build/ log/ install/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wayneparrott/rclnodejs_template.git"
+  },
+  "keywords": [
+    "ros",
+    "ros2",
+    "node",
+    "javascript",
+    "typescript",
+    "robot"
+  ],
+  "author": "Your Name <yourname@gmail.com> (yourwebsite.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wayneparrott/rclnodejs_template/issues"
+  },
+  "homepage": "https://github.com/wayneparrott/rplidar-ros-rclnodejs#readme",
+  "dependencies": {
+    "rclnodejs": "^0.10.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.5",
+    "@wayneparrott/rclnodejs-types": "^0.1.4",
+    "typescript": "^3.6.4"
+  },
+  "node": ">= 6.10.0 < 11.0.0"
+}

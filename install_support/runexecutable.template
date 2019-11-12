@@ -1,0 +1,3 @@
+#!/bin/sh
+cd _PKG_INSTALL_PATH_
+npm start
