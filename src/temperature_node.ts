@@ -31,19 +31,29 @@ export class TemperatureNode {
 		this.logger.info('Starting ' + NODE_NAME);
 
 		this.publisher = this.node.createPublisher('sensor_msgs/msg/Temperature', TOPIC);
-		this.clock = new rclnodejs.ROSClock();
+		this.clock = new rclnodejs.Clock();
+		
+		this.logger.info('Init complete');
 	}
 
 	// generate temperature msgs every second
 	start(): void {
-		if (this.timer && !this.timer.isCanceled()) {
-			this.logger.error(NODE_NAME + ' already started.');
-			return;
-		} else {
-			this.node.destroyTimer(this.timer);
+	
+		if (this.timer) {
+			if (this.timer.isCanceled()) {
+				this.node.destroyTimer(this.timer);
+				this.timer = null;
+			} else {
+				this.logger.error(NODE_NAME + ' already started.');
+				return;
+			}
 		}
 
-		this.node.createTimer(INTERVAL_MS, this.createAndPublishTemperature);
+		// notice 'this' must be bound to the callback function 
+		// in order to reference it
+		this.node.createTimer(INTERVAL_MS, 
+			this.createAndPublishTemperature.bind(this));
+
 		rclnodejs.spin(this.node);
 	}
 
