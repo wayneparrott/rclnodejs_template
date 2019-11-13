@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(YOUR_ROSPGK_NAME_HERE)
+project(your_rospkg_name_here)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)

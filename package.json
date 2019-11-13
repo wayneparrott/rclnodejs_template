@@ -1,5 +1,5 @@
 {
-  "name": "rclnodejs_template",
+  "name": "your_rospkg_name_here",
   "version": "0.0.1",
   "description": "ROS2 package using rclnodejs, TypeScript (javascript) and node.js",
   "main": "dist/index.js",
