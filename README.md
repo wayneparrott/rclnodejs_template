@@ -120,8 +120,8 @@ If you wish to code with JavaScript only you will need to edit the start script 
 
 
 ## Tips and Notes
-* **When working from the commandline don't forget to setup your environment by running one of the setup.[bash, ps1, sh, zsh]**
-* I've only tested this project on Linux Ubuntu 18.04 and ros2 dashing. 
+* **When working from the commandline don't forget to configure your ROS2 environment by running one of the setup.[bash, ps1, sh, zsh]** files found in the /ros folder after running the npm build script, e.g., build-colcon.
+* My initial testing of this package has been limited to ros2 (v dashing), rclnodejs (v0.10.2) and Linux Ubuntu (v18.04). 
 * Please provide feedback on issues and improvement suggestions.
 * For TypeScript support, I created the rclnodejs-types project with *.d.ts files for rclnodejs. These typings are referenced in the project tsconfig.json file shown below:
 
@@ -134,5 +134,9 @@ If you wish to code with JavaScript only you will need to edit the start script 
 * The ROS package executable is a script that is created by CMakeList_rclnode_project.txt when you run `npm run build-colcon`. The script performs a cd to the project directory (this directory) and runs the `npm start`. The package executable is installed to ros/<your_pkg_name>/lib/<your_pkg_name>/<executable>. In addition, a python3 launch file is created and installed to ros/<your_pkg_name>/share/<your_pkg_name>/launch/<your_pkg_name>.launch.py.
 
 
+## Special Thanks
 
+* Thanks to the [rclnodejs](https://github.com/RobotWebTools/rclnodejs) team for enabling JavaScript coders to participate in the ROS2 develper community.
+
+* Thanks to [Genuitec](https://genuitec.com) for the [CodeMix](https://www.genuitec.com/products/codemix/) plugin for Eclipse which provides great TypeScript and Python coding tools among its many other supported languages. 
 
