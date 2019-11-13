@@ -131,6 +131,8 @@ If you wish to code with JavaScript only you will need to edit the start script 
     "node_modules/@types"
 ]
 ```
+* The ROS package executable is a script that is created by CMakeList_rclnode_project.txt when you run `npm run build-colcon`. The script performs a cd to the project directory (this directory) and runs the `npm start`. The package executable is installed to ros/<your_pkg_name>/lib/<your_pkg_name>/<executable>. In addition, a python3 launch file is created and installed to ros/<your_pkg_name>/share/<your_pkg_name>/launch/<your_pkg_name>.launch.py.
+
 
 
 
