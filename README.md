@@ -81,10 +81,36 @@ Next install the project's Node.js dependencies. From commandline run:
 During the npm install process don't be alarmed by the compilation warnings that may be displayed as the rclnodejs module is installed.  
 
 ### 7. Build
-Use the npm scripts for building and installing your ROS2 package. From commandline:
+If the ROS2 package you are building is not part of a ROS2 workspace then use the the npm scripts for building and installing your ROS2 package. If you are not sure if you are working in a ROS2 workspace then you are probably not and should do the following. From commandline:
 ```
     npm run build
 ```
+
+
+If you are creating your ROS2 package in a ROS2 workspace you must run the build in two steps.    
+
+**Step-1: Compile TypeScript files**
+From your ROS2 package directory, run `npm run build-tsc`. This will compile the project's TypeScript files into the dest/ folder.
+
+**Step-2: Run colcon, the ROS2 build system**
+From the root directory of the ROS2 workspace. Be sure to source/execute the <workspace>/install/setup.xxx file for your respective shell environment to create the proper ROS2 overlay environment. 
+
+Then from commandline run:
+```
+     colcon build
+```
+
+For example if I have this ROS2 workspace directory structure:
+```
+   myros2wkspc/
+     |
+      - install/
+      - src/
+         |
+          - mypkg/
+```
+From a shell, cd to myros2wkspc/ and run `colcon build` 
+
 The build process does the following:
 * compiles TypeScript files into the dist/ folder
 * using the ROS2 colcon build system it creates the local ROS2 package internals including all custom package interfaces and messages that may be defined, (see ros/ directory)
