@@ -88,8 +88,8 @@ Use the npm scripts for building and installing your ROS2 package. From commandl
 The build process does the following:
 * compiles TypeScript files into the dist/ folder
 * using the ROS2 colcon build system it creates the local ROS2 package internals including all custom package interfaces and messages that may be defined, (see ros/ directory)
-* creates an executable script with the name you provided in CMakeLists_rclnode_project.txt (see step-5) and installs it in the local ROS2 package internals
-* creates a launch directory and launch file, e.g., launch/my_rospkg_name.launch.py, and installs it in the local ROS2 package internals
+* creates an executable script with the name you provided in CMakeLists_rclnode_project.txt (see step-5) and installs it in the local ROS2 package internals. This step requires python3 be on your PATH as it runs the install_support/create_files.py script.
+* creates a launch directory and launch file, e.g., launch/my_rospkg_name.launch.py, and installs it in the local ROS2 package internals. This is also created in the step outlined above.
 
 ### 8. Configure shell Environment
 From a shell, execute the specific ros/ batch file for your environment. Here's an example for bash shell:
@@ -132,7 +132,6 @@ If you wish to code with JavaScript only you will need to edit the start script 
 ]
 ```
 * The ROS package executable is a script that is created by CMakeList_rclnode_project.txt when you run `npm run build-colcon`. The script performs a cd to the project directory (this directory) and runs the `npm start`. The package executable is installed to ros/<your_pkg_name>/lib/<your_pkg_name>/<executable>. In addition, a python3 launch file is created and installed to ros/<your_pkg_name>/share/<your_pkg_name>/launch/<your_pkg_name>.launch.py.
-
 
 
 
