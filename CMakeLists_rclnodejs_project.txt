@@ -31,7 +31,7 @@ ament_export_dependencies(rosidl_default_runtime)
 #
 
 # replace "ros_node_executable" with the name of your node
-set(RUN_EXECUTABLE "ros_node_executable")
+set(RUN_EXECUTABLE "rospkg_executable")
 set(INSTALL_SUPPORT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/install_support)
   
 install(CODE "execute_process(
