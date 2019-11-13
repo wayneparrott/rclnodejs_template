@@ -37,37 +37,19 @@ I recommend creating a new Github repository using this project as a [template](
 
 ![](https://raw.githubusercontent.com/wayneparrott/rclnodejs_template/master/github-template.png)
 
-### 3. Update package.xml and package.json with ROS package name
-package.xml is a ROS2 file that specifies general package information and dependencies. Edit package.xml, near the top of the file, replace the `<name>` tag content with the name of your package.
-```xml
-<package format="3">
-  <name>your_rospkg_name_here</name>
-  ...
+### 3. Configure package.xml, package.json, CMakeLists.txt and CMakeList_rclnodejs_project.txt
+
+Will use the configure_files.py script to configure 4 files. Before you can proceed you must decide on the name of the package executable, e.g., my_node 
+
+From the commandline run the configure_files.py script from the root directory of this project with the executable name as an argument to the script.
+
+```
+   cd <root_directory_of_this_project>
+
+   python3 install_support/scripts/configure_project.py my_node
 ```
 
-In the Node.js package.json file, replace the `name` property with the name of your ROS2 package.
-
-```javascript
-{
-  "name": "your_rospkg_name_here",
-  "version": "0.0.1",
-  ...
-  ```
-
-### 4. Update CMakeLists.txt with package name
-In CMakeLists.txt, near the top of the file, revise `project()` to use the name of your package
- ```
-project(your_rospkg_name_here)
-``` 
-
-### 5. Update CMakeLists_rclnodejs_project.txt with executable name
-In CMakeLists_rclnodejs_project.txt file, near line #34, specify the name of the ROS2 package executable to create and install.   
-```
-# replace "ros_node_executable" with the name of your node
-set(RUN_EXECUTABLE "rospkg_executable")
-```
-
-### 6. Install Node.js dependencies
+### 4. Install Node.js dependencies
 Before installing dependent node modules, verify your are using a compatible version of node. From commandline run the following command to determine your node version.
 ```
    node -v
@@ -80,7 +62,7 @@ Next install the project's Node.js dependencies. From commandline run:
 ```
 During the npm install process don't be alarmed by the compilation warnings that may be displayed as the rclnodejs module is installed.  
 
-### 7. Build
+### 5. Build
 If the ROS2 package you are building is not part of a ROS2 workspace then use the the npm scripts for building and installing your ROS2 package. If you are not sure if you are working in a ROS2 workspace then you are probably not and should do the following. From commandline:
 ```
     npm run build
@@ -117,13 +99,13 @@ The build process does the following:
 * creates an executable script with the name you provided in CMakeLists_rclnode_project.txt (see step-5) and installs it in the local ROS2 package internals. This step requires python3 be on your PATH as it runs the install_support/create_files.py script.
 * creates a launch directory and launch file, e.g., launch/my_rospkg_name.launch.py, and installs it in the local ROS2 package internals. This is also created in the step outlined above.
 
-### 8. Configure shell Environment
+### 6. Configure shell Environment
 From a shell, execute the specific ros/ batch file for your environment. Here's an example for bash shell:
 ```
     source ros/setup.bash
 ```
 
-### 9. Test
+### 7. Test
 You can confirm your package installation is setup and working correction as follows.
 
 Confirm the ROS2 package executable specified in CMakeList_rclnodejs_project.txt was created and runnable. From commandline:
@@ -136,12 +118,12 @@ You can run the executable with this command template:
 ```
     ros2 run <your_rospkg_name> <executable>
 ```
-You can use the ROS2 launch system to launch the executable using the launch file that was created and istalled in step-8.
+You can use the ROS2 launch system to launch the executable using the launch file that was created and istalled in step-5.
 ```
     ros2 launch <your_rospkg_name> <your_rospkg_name>.launch.py
 ```
 
-### 10. JavaScript Configuration
+### 8. JavaScript Configuration
 If you wish to code with JavaScript only you will need to edit the start script in package.json to match your JavaScript file layout. The project is preconfigured for TypeScript with the npm build script compiling *.ts files to the 'dist/' folder and the npm start script launches the 'dist/index.js'. 
 
 
