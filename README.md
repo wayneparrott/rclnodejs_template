@@ -24,10 +24,10 @@ This project is a TypeScript (JavaScript) node.js implementation of a ROS2 packa
 Use this project to create a package in a ROS2 workspace or as a standalone package in place of running the traditional commandline `ros2 pkg create your_package_name` 
 
 #### 1b. Naming
-Because this project is a ROS2 package the name of the directory you install it must conforms to the ROS2 package naming conventions. These are package names are lower-case characters separated by underscores, e.g., my_ros2_package*.
+Because this project is a ROS2 package, the name of the directory you install it to must conform to the [ROS2 naming conventions](https://www.ros.org/reps/rep-0144.html). In general package names must be lower-case characters separated by underscores, e.g., my_ros2_package*.
 
 #### 1c. Project Configuration
-As a template project you will need to edit several files, specifying the name you have choosen for the package. We'll get to this shortly.
+As a template project you will need to edit several files, specifying the name you have choosen for the package and its executable. We'll get to this shortly.
 
 
 ### 2. Download or Clone the rclnode_template Git Repo
@@ -37,7 +37,7 @@ I recommend creating a new Github repository using this project as a [template](
 
 ![](https://raw.githubusercontent.com/wayneparrott/rclnodejs_template/master/github-template.png)
 
-### 3. Edit package.xml and package.json
+### 3. Update package.xml and package.json with ROS package name
 package.xml is a ROS2 file that specifies general package information and dependencies. Edit package.xml, near the top of the file, replace the `<name>` tag content with the name of your package.
 ```xml
 <package format="3">
@@ -54,18 +54,19 @@ In the Node.js package.json file, replace the `name` property with the name of y
   ...
   ```
 
-### 4. Edit CMakeLists.txt
+### 4. Update CMakeLists.txt with package name
 In CMakeLists.txt, near the top of the file, revise `project()` to use the name of your package
  ```
 project(your_rospkg_name_here)
 ``` 
 
-### 5. Edit CMakeLists_rclnodejs_project.txt
+### 5. Update CMakeLists_rclnodejs_project.txt with executable name
 In CMakeLists_rclnodejs_project.txt file, near line #34, specify the name of the ROS2 package executable to create and install.   
 ```
 # replace "ros_node_executable" with the name of your node
 set(RUN_EXECUTABLE "rospkg_executable")
 ```
+
 ### 6. Install Node.js dependencies
 Before installing dependent node modules, verify your are using a compatible version of node. From commandline run the following command to determine your node version.
 ```
