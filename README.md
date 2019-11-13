@@ -12,6 +12,7 @@ What this project provides:
 ## Prerequisites
 * [node.js]() (>=6.4.0 <11.0.0), tested with ver 10.17.0 
 * [ros2] - tested with ros2 ver. dashing-diademata
+* Python3 
 * Your favorite coding tool - *I use CodeMix for Eclipse which has great TypeScript and Python tooling*
 
 ## Why use this project
@@ -30,9 +31,11 @@ As a template project you will need to edit several files, specifying the name y
 
 
 ### 2. Download or Clone the rclnode_template Git Repo
-You can clone the repo, create a new github repo using this repo as a template or download it. Regardless of which method you choose remember to destination directory naming must conform to the ROS2 package naming conventions. 
+You can clone the repo, create a new github repo using this [repo as a template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) or download it. Regardless of the method you choose remember the name of the destination directory must conform to the ROS2 package naming conventions. 
 
 I recommend creating a new Github repository using this project as a [template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template). To get started click the "Use this template" button as shown below and proceed from there. Alternatively you can either clone this repo or download it to your system. 
+
+![](https://raw.githubusercontent.com/wayneparrott/rclnodejs_template/master/github-template.png)
 
 ### 3. Edit package.xml and package.json
 package.xml is a ROS2 file that specifies general package information and dependencies. Edit package.xml, near the top of the file, replace the `<name>` tag content with the name of your package.
@@ -83,8 +86,8 @@ Use the npm scripts for building and installing your ROS2 package. From commandl
 ```
 The build process does the following:
 * compiles TypeScript files into the dist/ folder
-* creates local ROS2 package internals including any custom package interfaces and messages, (see ros/ directory)
-* creates an executable script with the name you provided in CMakeLists_rclnode_project.txt and installs it in the local ROS2 package internals
+* using the ROS2 colcon build system it creates the local ROS2 package internals including all custom package interfaces and messages that may be defined, (see ros/ directory)
+* creates an executable script with the name you provided in CMakeLists_rclnode_project.txt (see step-5) and installs it in the local ROS2 package internals
 * creates a launch directory and launch file, e.g., launch/my_rospkg_name.launch.py, and installs it in the local ROS2 package internals
 
 ### 8. Configure shell Environment
@@ -110,11 +113,13 @@ You can use the ROS2 launch system to launch the executable using the launch fil
 ```
     ros2 launch <your_rospkg_name> <your_rospkg_name>.launch.py
 ```
+
 ### 10. JavaScript Configuration
-The project is configured as a TypeScript project with the npm start script using 'dist/index.js'. If you wish to code with JavaScript only you will need to edit the start script in package.json to match your JavaScript file layout.
+If you wish to code with JavaScript only you will need to edit the start script in package.json to match your JavaScript file layout. The project is preconfigured for TypeScript with the npm build script compiling *.ts files to the 'dist/' folder and the npm start script launches the 'dist/index.js'. 
 
 
-## Notes
+## Tips and Notes
+* **When working from the commandline don't forget to setup your environment by running one of the setup.[bash, ps1, sh, zsh]**
 * I've only tested this project on Linux Ubuntu 18.04 and ros2 dashing. 
 * Please provide feedback on issues and improvement suggestions.
 * For TypeScript support, I created the rclnodejs-types project with *.d.ts files for rclnodejs. These typings are referenced in the project tsconfig.json file shown below:
