@@ -32,5 +32,6 @@ log
 
 # rplidar_ros_rclnodejs
 install_support/tmp
+dist
 
 
