@@ -25,7 +25,7 @@ for line in fin:
 	fout.write(line.replace('_PKG_', PACKAGE_NAME))
 fin.close()
 fout.close()
-print( "updated package.json")
+print( "  updated package.json")
 
 # edit package.xml
 fin  = open( os.path.join(TEMPLATE_DIR,'package.xml'), "r")
@@ -34,7 +34,7 @@ for line in fin:
 	fout.write(line.replace('_PKG_', PACKAGE_NAME))
 fin.close()
 fout.close()
-print( "updated package.xml")
+print( "  updated package.xml")
 
 # edit CMakeLists.txt
 fin  = open( os.path.join(TEMPLATE_DIR,'CMakeLists.txt'), "r")
@@ -43,7 +43,7 @@ for line in fin:
 	fout.write(line.replace('_PKG_', PACKAGE_NAME))
 fin.close()
 fout.close()
-print( "updated CMakeLists.txt")
+print( "  updated CMakeLists.txt")
 
 # edit CMakeLists_rclnodejs.txt
 fin  = open( os.path.join(TEMPLATE_DIR,'CMakeLists_rclnodejs_project.txt'), "r")
@@ -52,6 +52,6 @@ for line in fin:
 	fout.write(line.replace('_EXECUTABLE_', EXECUTABLE_NAME))
 fin.close()
 fout.close()
-print( "updated CMakeLists_rclnodejs_project")
+print( "  updated CMakeLists_rclnodejs_project")
 
 print( "Complete")
