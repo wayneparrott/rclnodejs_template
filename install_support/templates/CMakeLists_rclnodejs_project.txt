@@ -25,10 +25,6 @@ ament_export_dependencies(rosidl_default_runtime)
 #    
 # Requires Python3
 # 
-# add the following line to your CMakeList.txt to create ros2 node executable and launch files
-#
-#   include(${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists_install_support.txt)
-#
 
 # replace "ros_node_executable" with the name of your node
 set(RUN_EXECUTABLE "_EXECUTABLE_")

@@ -10,10 +10,10 @@ What this project provides:
 * example launch file demonstrating how to launch and manage multiple pkg executables as a single unit
 
 ## Prerequisites
-* [node.js]() (>=6.4.0 <11.0.0), tested with ver 10.17.0 
-* [ros2] - tested with ros2 ver. dashing-diademata
+* [node.js](https://nodejs.org/) (>=6.4.0 <11.0.0), tested with ver 10.17.0 
+* [ros2](https://index.ros.org/doc/ros2/) - tested with ros2 ver. dashing-diademata
 * Python3 
-* Your favorite coding tool - *I use CodeMix for Eclipse which has great TypeScript and Python tooling*
+* Your favorite coding tool - *I use [CodeMix](https://www.genuitec.com/products/codemix/) for Eclipse which has great TypeScript and Python tooling*
 
 ## Why use this project
 This project is a TypeScript (JavaScript) node.js implementation of a ROS2 package. A key feature of this project is its build and installation automation that creates a ROS2 node executable script and corresponding launch file for your node.js program such that it can be run or launched from the ros2 commandline. 
@@ -21,7 +21,7 @@ This project is a TypeScript (JavaScript) node.js implementation of a ROS2 packa
 ## Getting Started
 ### 1. Things to know
 #### 1a. Install as ROS2 package or use standalone
-Use this project to create a package in a ROS2 workspace or as a standalone package in place of running the traditional commandline `ros2 pkg create your_package_name` 
+Use this project to create a package in a ROS2 workspace or as a standalone package **in place** of running the traditional commandline `ros2 pkg create your_package_name` 
 
 #### 1b. Naming
 Because this project is a ROS2 package, the name of the directory you install it to must conform to the [ROS2 naming conventions](https://www.ros.org/reps/rep-0144.html). In general package names must be lower-case characters separated by underscores, e.g., my_ros2_package*.
@@ -37,9 +37,11 @@ I recommend creating a new Github repository using this project as a [template](
 
 ![](https://raw.githubusercontent.com/wayneparrott/rclnodejs_template/master/github-template.png)
 
-### 3. Configure package.xml, package.json, CMakeLists.txt and CMakeList_rclnodejs_project.txt
+### 3. Automated configuration of package.xml, package.json, CMakeLists.txt and CMakeList_rclnodejs_project.txt
 
-Will use the configure_files.py script to configure 4 files. Before you can proceed you must decide on the name of the package executable, e.g., my_node 
+We will use the configure_files.py script to configure 4 files. 
+
+Before you can proceed you must decide on the name of the package executable, e.g., my_node 
 
 From the commandline run the configure_files.py script from the root directory of this project with the executable name as an argument to the script.
 
@@ -60,7 +62,7 @@ Next install the project's Node.js dependencies. From commandline run:
 ```
    npm install
 ```
-During the npm install process don't be alarmed by the compilation warnings that may be displayed as the rclnodejs module is installed.  
+During the npm install process don't be alarmed by any compilation warnings that may be displayed as the rclnodejs module is installed. 
 
 ### 5. Build
 If the ROS2 package you are building is not part of a ROS2 workspace then use the the npm scripts for building and installing your ROS2 package. If you are not sure if you are working in a ROS2 workspace then you are probably not and should do the following. From commandline:
@@ -84,14 +86,14 @@ Then from commandline run:
 
 For example if I have this ROS2 workspace directory structure:
 ```
-   myros2wkspc/
+   my_ros2_wkspc/
      |
       - install/
       - src/
          |
-          - mypkg/
+          - my_pkg/
 ```
-From a shell, cd to myros2wkspc/ and run `colcon build` 
+From a shell, cd to my_ros2_wkspc/ and run `colcon build` 
 
 The build process does the following:
 * compiles TypeScript files into the dist/ folder
